@@ -18,7 +18,7 @@ Install Dependencies
 Start the Development Server
 ### `npm start`
 
-Open your web browser and go to http://localhost:3000 to view the app.
+Open your web browser to view the app.
 
 ## Real-Life Application
 
