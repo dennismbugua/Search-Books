@@ -1,15 +1,13 @@
 ## Awesome Book Search App
 
-Welcome to the Awesome Book Search App! This React application allows you to search for books using the Open Library API and showcases dynamic loading of search results with pagination.
-
+Welcome to the Awesome Book Search App! This React application allows you to search for books using the Open Library API and showcases dynamic loading of search results with pagination. \
 
 ## How to Run
 
-To run this app locally on your system, follow these steps:
-
+To run this app locally on your system, follow these steps: \
 
 Clone Repository:
-### `git clone https://github.com/yourusername/awesome-book-search.git`
+### `git clone https://github.com/yourusername/awesome-book-search.git` \
 
 Navigate to Project Directory
 ### `cd awesome-book-search`
@@ -35,9 +33,8 @@ Incorporate similar search features into platforms like online libraries or book
 ### Educational Tools:
 Integrate book search functionality into educational platforms to provide students with easy access to relevant reading materials.
 
-## Online Bookstores and Marketplaces:
-Implement book search features to allow users to discover and purchase books based on their preferences.
-
+### Online Bookstores and Marketplaces:
+Implement book search features to allow users to discover and purchase books based on their preferences. \
 
 ## About the Search Functionality
 
