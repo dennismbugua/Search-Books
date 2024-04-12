@@ -1,55 +1,72 @@
 /* App.css */
 
 body {
-    background-color: #f8f9fa; /* Light gray background */
-    font-family: Arial, sans-serif;
-    color: #333; /* Dark text color */
-  }
-  
-  .app-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-  }
-  
-  .search-container {
-    width: 100%;
-    max-width: 400px;
-    margin-bottom: 20px;
-  }
-  
-  .search-input {
-    width: 100%;
-    padding: 12px;
-    font-size: 16px;
-    border: 2px solid #007bff; /* Blue border */
-    border-radius: 8px;
-    outline: none;
-  }
-  
-  .search-input::placeholder {
-    color: #ccc; /* Light gray placeholder text */
-  }
-  
-  .books-list {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .book-item {
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd; /* Light gray border */
-    border-radius: 4px;
-    background-color: #fff; /* White background */
-  }
-  
-  .loading-text,
-  .error-text {
-    margin-top: 10px;
-    font-style: italic;
-    color: #888; /* Gray text color for loading and error messages */
-  }
-  
+  background-color: #f8f9fa; /* Light gray background */
+  font-family: Arial, sans-serif;
+  color: #333; /* Dark text color */
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.search-container {
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 2px solid #007bff; /* Blue border */
+  border-radius: 8px;
+  outline: none;
+}
+
+.search-input::placeholder {
+  color: #ccc; /* Light gray placeholder text */
+}
+
+.books-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.book-item {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd; /* Light gray border */
+  border-radius: 4px;
+  background-color: #fff; /* White background */
+}
+
+.loading-text,
+.error-text {
+  margin-top: 10px;
+  font-style: italic;
+  color: #888; /* Gray text color for loading and error messages */
+}
+
+.footer {
+  width: 100%;
+  background-color: #007bff;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+  position: fixed;
+  bottom: 0;
+}
+.footer a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.footer a:hover {
+  text-decoration: none;
+}

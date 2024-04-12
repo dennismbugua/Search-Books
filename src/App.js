@@ -53,6 +53,20 @@ export default function App() {
         {loading && <div className="loading-text">Loading...</div>}
         {error && <div className="error-text">Error loading books.</div>}
       </div>
+
+      {/* Footer */}
+      <footer className="footer">
+        <p>
+          &copy; Awesome Book Search App |{" "}
+          <a
+            href="https://github.com/dennismbugua/Search-Books"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Source Code
+          </a>
+        </p>
+      </footer>
     </div>
   );
 }
