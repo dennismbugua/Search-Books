@@ -20,7 +20,7 @@ Start the Development Server
 
 Open your web browser and go to http://localhost:3000 to view the app.
 
-**Real-Life Application**
+### Real-Life Application
 
 Imagine using this Book Search App to quickly find information about books, authors, and topics that interest you. Here are some ways this app can be utilized:
 
