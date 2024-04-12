@@ -39,3 +39,5 @@ Implement book search features to allow users to discover and purchase books bas
 ## About the Search Functionality
 
 The book search functionality in this app is powered by the Open Library API, a free and open API that provides access to millions of book records. When you enter a search query, the app fetches relevant book data from Open Library and displays the results dynamically.
+
+To have a live overview of the project and have a look and feel of how things get down visit: https://books-searches.netlify.app
