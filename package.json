@@ -6,11 +6,11 @@
     "axios": "^0.19.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "react-scripts": "3.1.2"
+    "react-scripts": "^5.0.1"
   },
   "scripts": {
-    "start": "react-scripts --openssl-legacy-provider start",
-    "build": "NODE_OPTIONS='--openssl-legacy-provider' react-scripts build",
+    "start": "react-scripts start",
+    "build": "build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
