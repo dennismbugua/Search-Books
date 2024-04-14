@@ -57,7 +57,7 @@ export default function App() {
       {/* Footer */}
       <footer className="footer">
         <p>
-          &copy; Awesome Book Search App |{" "}
+          &copy; {" "}
           <a
             href="https://github.com/dennismbugua/Search-Books"
             target="_blank"

@@ -36,6 +36,8 @@ body {
   width: 100%;
   display: flex;
   flex-direction: column;
+
+  align-items: center;
 }
 
 .book-item {
@@ -44,6 +46,9 @@ body {
   border: 1px solid #ddd; /* Light gray border */
   border-radius: 4px;
   background-color: #fff; /* White background */
+
+  width: 100%;
+  max-width: 600px;
 }
 
 .loading-text,
@@ -51,6 +56,11 @@ body {
   margin-top: 10px;
   font-style: italic;
   color: #888; /* Gray text color for loading and error messages */
+
+  width: 100%;
+  max-width: 600px; /* Adjust maximum width as needed */
+  padding: 10px;
+  text-align: center;
 }
 
 .footer {
