@@ -51,16 +51,33 @@ body {
   max-width: 600px;
 }
 
-.loading-text,
+.no-results-text,
+.no-more-results-text .loading-text,
 .error-text {
   margin-top: 10px;
   font-style: italic;
-  color: #888; /* Gray text color for loading and error messages */
+  /* color: #888; */
+  font-size: 16px;
+  color: #555;
 
   width: 100%;
   max-width: 600px; /* Adjust maximum width as needed */
   padding: 10px;
   text-align: center;
+}
+
+.loading-text {
+  font-style: italic;
+}
+
+.error-text {
+  color: #ff0000;
+  font-weight: bold;
+}
+
+.no-results-text,
+.no-more-results-text {
+  font-weight: bold;
 }
 
 .footer {

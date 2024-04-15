@@ -41,6 +41,15 @@ export default function App() {
       </div>
 
       <div className="books-list">
+        {loading && <div className="loading-text">Loading...</div>}
+        {error && <div className="error-text">Error loading books.</div>}
+        {!loading && books.length === 0 && (
+          <div className="no-results-text">
+            {query
+              ? "No results found for this search. Ensure your search is correct "
+              : "Search results will be displayed here."}
+          </div>
+        )}
         {books.map((book, index) => (
           <div
             key={book}
@@ -50,14 +59,15 @@ export default function App() {
             {book}
           </div>
         ))}
-        {loading && <div className="loading-text">Loading...</div>}
-        {error && <div className="error-text">Error loading books.</div>}
+        {!loading && !hasMore && books.length > 0 && (
+          <div className="no-more-results-text">No more results.</div>
+        )}
       </div>
 
       {/* Footer */}
       <footer className="footer">
         <p>
-          &copy; {" "}
+          &copy;{" "}
           <a
             href="https://github.com/dennismbugua/Search-Books"
             target="_blank"
