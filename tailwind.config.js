@@ -1,6 +1,5 @@
 module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}",
-  "./public/index.html"],
+  content: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
   theme: {
     extend: {
       spacing: {
@@ -15,5 +14,8 @@ module.exports = {
       },
     },
   },
-  plugins: [require("@tailwindcss/line-clamp"), require("tailwind-scrollbar")],
+  plugins: [
+    require("@tailwindcss/line-clamp"),
+    require("tailwind-scrollbar")({ nocompatible: true }),
+  ],
 };
