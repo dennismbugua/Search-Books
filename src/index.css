@@ -2,8 +2,5 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "tailwindcss";
-
-@plugin 'tailwind-scrollbar';
 
 /* Custom styles can go here */
