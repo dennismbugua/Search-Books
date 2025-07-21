@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const GOOGLE_API_KEY = 'AIzaSyBBCKPqvMoFWsBvZSVyRoW8MMnt9NG5l2A'; // Replace with your API key
+const GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_API_KEY; // Replace with your API key
 const GOOGLE_BOOKS_API = 'https://www.googleapis.com/books/v1/volumes';
 
 export const searchGoogleBooks = async (query, startIndex = 0) => {
