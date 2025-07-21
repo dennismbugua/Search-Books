@@ -7,8 +7,20 @@ import "./App.css";
 export default function App() {
   const [query, setQuery] = useState("");
   const [pageNumber, setPageNumber] = useState(1);
-  const { books, hasMore, loading, error } = useBookSearch(query, pageNumber);
+  const [sortBy, setSortBy] = useState("title"); // Add sorting state
+  const [sortOrder, setSortOrder] = useState("asc"); // Add sort order state
+
   const listRef = useRef();
+
+  const handlePageReset = useCallback(() => {
+    setPageNumber(1);
+  }, []);
+
+  const { books, hasMore, loading, error } = useBookSearch(
+    query,
+    pageNumber,
+    handlePageReset
+  );
 
   // Handle infinite loading
   const isItemLoaded = (index) => index < books.length;
@@ -20,9 +32,38 @@ export default function App() {
     }
   }, [loading, hasMore]);
 
+  // Add sorting function
+  const sortedBooks = [...books].sort((a, b) => {
+    let aValue, bValue;
+
+    if (sortBy === "authors") {
+      // Handle authors array by joining names
+      aValue = (a[sortBy]?.[0] || "").toLowerCase();
+      bValue = (b[sortBy]?.[0] || "").toLowerCase();
+    } else {
+      // Handle other fields (title, publishedDate)
+      aValue = (a[sortBy] || "").toLowerCase();
+      bValue = (b[sortBy] || "").toLowerCase();
+    }
+
+    return sortOrder === "asc"
+      ? aValue.localeCompare(bValue)
+      : bValue.localeCompare(aValue);
+  });
+
+  // Add sort handler
+  const handleSort = (field) => {
+    if (field === sortBy) {
+      setSortOrder(sortOrder === "asc" ? "desc" : "asc");
+    } else {
+      setSortBy(field);
+      setSortOrder("asc");
+    }
+  };
+
   // Update the Row component
-  const Row = ({ index, style }) => {
-    if (!isItemLoaded(index)) {
+  const Row = ({ book, style }) => {
+    if (!book) {
       return (
         <div style={style} className="p-4 border-b animate-pulse">
           <div className="flex gap-4">
@@ -37,7 +78,7 @@ export default function App() {
       );
     }
 
-    const book = books[index];
+    // const book = books[index];
     return (
       <div
         style={{
@@ -117,19 +158,6 @@ export default function App() {
     );
   };
 
-  // // Update the List component props
-  // <List
-  //   height={700}
-  //   width="100%"
-  //   itemCount={itemCount}
-  //   itemSize={160} // Reduced to match new minHeight
-  //   className="border rounded-lg shadow-sm" // Added container styling
-  //   onItemsRendered={onItemsRendered}
-  //   ref={ref}
-  // >
-  //   {Row}
-  // </List>;
-
   function handleSearch(e) {
     setQuery(e.target.value);
     setPageNumber(1);
@@ -137,44 +165,104 @@ export default function App() {
 
   return (
     <div className="max-w-4xl mx-auto p-6">
-      {" "}
-      {/* Increased max width and padding */}
-      <input
-        type="text"
-        value={query}
-        onChange={handleSearch}
-        placeholder="Search for books..."
-        className="w-full p-4 text-lg border rounded-lg shadow-sm mb-6 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-      />
-      {books.length > 0 && (
-        <InfiniteLoader
-          isItemLoaded={isItemLoaded}
-          itemCount={itemCount}
-          loadMoreItems={loadMoreItems}
-          threshold={5}
-        >
-          {({ onItemsRendered, ref }) => (
-            <List
-              height={700} // Increased height
-              width="100%"
-              itemCount={itemCount}
-              itemSize={180} // Adjusted to match new card height
-              onItemsRendered={onItemsRendered}
-              ref={ref}
+      <div className="flex flex-col gap-6">
+        {/* Search and Sort Controls */}
+      <div className="flex flex-col gap-4 max-w-2xl mx-auto w-full"> {/* Added max-width and center alignment */}
+        {/* Search Bar */}
+        <input
+          type="text"
+          value={query}
+          onChange={handleSearch}
+          placeholder="Search for books..."
+          className="w-full p-3 text-base border rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+        />
+
+          {/* Sort Controls */}
+          {/* Sort Controls */}
+          <div className="flex items-center justify-end gap-3">
+            <div className="relative">
+              <select
+                value={sortBy}
+                onChange={(e) => handleSort(e.target.value)}
+                className="appearance-none px-6 py-3 pr-10 text-base border rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white min-w-[180px] cursor-pointer"
+              >
+                <option value="title">Sort by Title</option>
+                <option value="authors">Sort by Author</option>
+                <option value="publishedDate">Sort by Date</option>
+              </select>
+              {/* Custom dropdown arrow */}
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-500">
+                <svg
+                  className="h-4 w-4"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </div>
+            </div>
+            <button
+              onClick={() => setSortOrder(sortOrder === "asc" ? "desc" : "asc")}
+              className="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors min-w-[48px] flex items-center justify-center"
+              aria-label={
+                sortOrder === "asc" ? "Sort ascending" : "Sort descending"
+              }
             >
-              {Row}
-            </List>
-          )}
-        </InfiniteLoader>
-      )}
-      {!loading && !error && books.length === 0 && query && (
-        <div className="text-center text-gray-500">No books found</div>
-      )}
-      {error && (
-        <div className="text-red-500 text-center">
-          Something went wrong. Please try again.
+              <span className="text-xl">{sortOrder === "asc" ? "↑" : "↓"}</span>
+            </button>
+          </div>
         </div>
-      )}
+
+        {/* Results Count */}
+        {books.length > 0 && (
+          <div className="text-sm text-gray-600">
+            Showing {books.length} results
+          </div>
+        )}
+
+        {/* Book List */}
+        {books.length > 0 && (
+          <InfiniteLoader
+            isItemLoaded={isItemLoaded}
+            itemCount={itemCount}
+            loadMoreItems={loadMoreItems}
+            threshold={5}
+          >
+            {({ onItemsRendered, ref }) => (
+              <List
+                height={700}
+                width="100%"
+                itemCount={itemCount}
+                itemSize={180}
+                onItemsRendered={onItemsRendered}
+                ref={ref}
+              >
+                {({ index, style }) => (
+                  <Row book={sortedBooks[index]} style={style} />
+                )}
+              </List>
+            )}
+          </InfiniteLoader>
+        )}
+
+        {/* Status Messages */}
+        {!loading && !error && books.length === 0 && (
+          <div className="text-center text-gray-500">
+            {query
+              ? "No books found"
+              : "Search for books or browse the collection"}
+          </div>
+        )}
+        {error && (
+          <div className="text-red-500 text-center">
+            Something went wrong. Please try again.
+          </div>
+        )}
+      </div>
     </div>
   );
 }
