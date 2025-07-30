@@ -35,7 +35,7 @@ Lazy loading images with error fallbacks
 Request deduplication to prevent duplicate API calls
 
 ## 📚 Learn More
-Want to understand how this app was built? Check out my comprehensive blog post that walks through every decision, optimization, and feature:
+Want to understand how this app was built? 
+Check out my comprehensive blog post that walks through every decision, optimization, and feature:
 
-Clone Repository:
 ### 📖 `https://dennismbugua.co.ke/articles/building-a-dynamic-book-search-app-with-react-a-comprehensive-guide` 
