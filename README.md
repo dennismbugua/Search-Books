@@ -38,4 +38,4 @@ Request deduplication to prevent duplicate API calls
 Want to understand how this app was built? 
 Check out my comprehensive blog post that walks through every decision, optimization, and feature:
 
-📖 (https://dennismbugua.co.ke/articles/building-a-dynamic-book-search-app-with-react-a-comprehensive-guide) 
+📖 https://dennismbugua.co.ke/articles/building-a-dynamic-book-search-app-with-react-a-comprehensive-guide
